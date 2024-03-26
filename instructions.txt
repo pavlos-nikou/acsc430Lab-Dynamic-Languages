@@ -1,0 +1,45 @@
+My Store
+++++++++++++++++++++++++++++++++
+a) Load product data from CSV----------------Done
+b) List ALL products
+c) List Electronic products
+d) List non-Electronic products
+e) Add Electronic product
+f) Add a TV product
+g) Add a Book
+h) Edit product
+i) Store product data in CSV
+Option:
+a) Load product data from CSV
+Enter CSV file: all_products.CSV
+6 products were added
+b) List ALL products
+1000, Electronics, Blender, Braun, €40.00, Discount: 10%
+1001, Electronics, Toaster, Moulinex, €53.99, Discount: 15%
+1002, TV, Sony 43" Smart LED Full HD KDL-43WF665, Sony, €423.99, Discount:
+20%, Size: 43 inches, SmartTV: Yes
+1003, TV, LG OLED55BX3LB 4K UHD OLED Smart, LG, €1,199.99, Discount: 25%,
+Size: 55 inches SmartTV: Yes
+1004, Book, Seat 7a, Sebastian Fitzek, €25.95, Discount: 15%
+1005, Book, Apropos of Nothing, Woody Allen, €14.41, Discount 5%
+c) List Electronic products
+1000, Electronics, Blender, Braun, €40.00, Discount: 10%
+1001, Electronics, Toaster, Moulinex, €53.99, Discount: 15%
+1002, TV, Sony 43" Smart LED Full HD KDL-43WF665, Sony, €423.99, Discount:
+20%, Size: 43 inches, SmartTV: Yes
+1003, TV, LG OLED55BX3LB 4K UHD OLED Smart, LG, €1,199.99, Discount: 25%,
+Size: 55 inches SmartTV: Yes
+d) List non-Electronic products
+1004, Book, Seat 7a, Sebastian Fitzek, €25.95, Discount: 15%
+1005, Book, Apropos of Nothing, Woody Allen, €14.41, Discount 5%
+e) Add Electronic product
+f) Add a TV product
+g) Add a Book
+[Prompt the user to enter the relevant information for each product]
+h) Edit product
+Enter serial number: 1002
+[Prompt the user to enter the relevant information for each product]
+i) Store product data in CSV
+Enter CSV file to store data: all_products.CSV
+Would you like to overwrite files: Y
+11 Products written to file

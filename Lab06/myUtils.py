@@ -17,7 +17,8 @@ class Product:
         return self.title
     
 class Electronics(Product):
-    def __init__(self, manufacturer, discount):
+    def __init__(self, sn, title, price, manufacturer, discount):
+        super().__init__(sn, title, price)
         self.mafct = manufacturer
         self.discount = discount
     def setManufacturer(self, newManufacturer):
@@ -32,7 +33,8 @@ class Electronics(Product):
         return self.regularPrice * self.discount
     
 class Books(Product):
-    def __init__(self, auth, yearPublished, discount):
+    def __init__(self, sn, title, price, auth, discount, yearPublished=None):
+        super().__init__(sn, title, price)
         self.author = auth
         self.yearPublished = yearPublished
         self.discount = discount
@@ -50,7 +52,8 @@ class Books(Product):
         return self.regularPrice * self.discount
     
 class Tvs(Electronics):
-    def __init__(self, size, smartTv):
+    def __init__(self, sn, title, price, manufacturer, discount, size, smartTv):
+        super().__init__(sn, title, price, manufacturer, discount)
         self.size = size
         self.smartTV = smartTv
     def setSize(self, newSize):
