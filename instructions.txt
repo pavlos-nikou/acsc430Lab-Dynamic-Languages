@@ -1,12 +1,12 @@
 My Store
 ++++++++++++++++++++++++++++++++
 a) Load product data from CSV----------------Done
-b) List ALL products
-c) List Electronic products
-d) List non-Electronic products
-e) Add Electronic product
-f) Add a TV product
-g) Add a Book
+b) List ALL products --------------Done
+c) List Electronic products --------Done
+d) List non-Electronic products-------Done
+e) Add Electronic product ----------Done
+f) Add a TV product ----------Done
+g) Add a Book ----------Done
 h) Edit product
 i) Store product data in CSV
 Option:

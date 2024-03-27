@@ -15,6 +15,8 @@ class Product:
         self.title = newTitle
     def getTitle(self):
         return self.title
+    def __str__(self):
+        return f'\tProduct Name: {self.title}\n\tSerial Number: {self.serialNumber}\n\tRegular Price: {self.regularPrice}\n\n'
     
 class Electronics(Product):
     def __init__(self, sn, title, price, manufacturer, discount):
@@ -30,7 +32,9 @@ class Electronics(Product):
     def getDiscount(self):
         return self.discount
     def computeDiscount(self):
-        return self.regularPrice * self.discount
+        return float(self.regularPrice)-(float(self.regularPrice) * float(self.discount))
+    def __str__(self):
+        return f'\tProduct Name:{self.title}\n\tSerial Number: {self.serialNumber}\n\tManufacturer: {self.mafct}\n\tRegular Price: {self.regularPrice}\n\tDiscount Price({float(self.discount)*100:.2f}%): {self.computeDiscount():.2f}\n\n'
     
 class Books(Product):
     def __init__(self, sn, title, price, auth, discount, yearPublished=None):
@@ -49,7 +53,10 @@ class Books(Product):
     def getDiscount(self):
         return self.discount
     def computeDiscount(self):
-        return self.regularPrice * self.discount
+        return float(self.regularPrice)-(float(self.regularPrice) * float(self.discount))
+    def __str__(self):
+        return f'\tProduct Name:{self.title}\n\tSerial Number: {self.serialNumber}\n\tAuthor: {self.author}\n\tYear Published: {self.yearPublished}\n\tRegular Price: {self.regularPrice}\n\tDiscount Price({float(self.discount)*100:.2f}%): {self.computeDiscount():.2f}\n\n'
+    
     
 class Tvs(Electronics):
     def __init__(self, sn, title, price, manufacturer, discount, size, smartTv):
@@ -64,3 +71,5 @@ class Tvs(Electronics):
         self.smartTV = newSmartTv
     def getSmartTv(self):
         return self.smartTV
+    def __str__(self):
+        return f'\tProduct Name:{self.title}\n\tSerial Number: {self.serialNumber}\n\tManufacturer: {self.mafct}\n\tSize: {self.size}"\n\tSmartTv: {self.smartTV}\n\tRegular Price: {self.regularPrice}\n\tDiscount Price({float(self.discount)*100:.2f}%): {self.computeDiscount():.2f}\n\n'
