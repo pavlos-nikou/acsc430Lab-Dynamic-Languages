@@ -1,6 +1,12 @@
 import csv
 import myUtils as utils
 
+
+# regnum: 26276
+# name: pavlos
+# surname: nikou
+# lab number: Lab06
+
 def openCsvFile(fileName):
     products = []
     file = open(fileName, "r")
