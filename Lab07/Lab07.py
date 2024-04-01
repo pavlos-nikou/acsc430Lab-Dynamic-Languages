@@ -2,34 +2,49 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+# pavlos nikou
+# st026276
+# Lab07
 
+
+# "Print month with the biggest profit"
+def get_most_profit_month(df):
+    return df.loc[df['total_profit'].idxmax()]
+
+# "Print average sales for all products"
 def get_yearly_average(df):
     salesData = df.drop(["month_number", "total_units", "total_profit"],axis=1)
     return salesData.mean()
 
-def get_most_profit_month(df):
-    return df.loc[df['total_profit'].idxmax()]
 
-def get_product_over_under(df, product, min, max):
-    overDf = df[df[product] > min]
-    return overDf[overDf[product]< max]
+# "Print records with toothpaste sales > 6000 and face cream sales < 3000"]
+def get_product_over_under(df, product1, product2):
+    overDf = df[df[product1] > 6000]
+    return overDf[overDf[product2]< 3000]
 
+# Line plot of total profit for all months (X: Month, Y: profit)"]
+# "Line plot of total profit for all months with red dotted line and dot markers"
 def plotLine(xAxis, yAxis, xLabel, yLabel, style = {"line-color":"b", "line-style":"-","marker":""}):
     plt.title("Monthly Profit")
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)
     styleStr = f"{style["marker"]}{style["line-style"]}{style["line-color"]}"
     print(styleStr)
-    plt.plot(xAxis, yAxis, styleStr)
-    plt.show()
-
-def plot_units_sold(products, months):
-    for product in products:
-        print(type(product))
-        plt.plot(months, products[product], label = product)
+    plt.plot(xAxis, yAxis, styleStr, label = "monthly profit")
     plt.legend()
     plt.show()
 
+# "Multiline plot of units sold per month for each product"
+def plot_units_sold(products, months):
+    plt.title("Units sold per month")
+    for product in products:
+        plt.plot(months, products[product], label = product)
+    plt.ylabel("Units Sold")
+    plt.xlabel("Month")
+    plt.legend()
+    plt.show()
+
+# "Scatterplot showing correlation between face cream and shampoo sales"
 def scatter_products(productX, productY, xLabel, yLabel):
     plt.scatter(productX, productY)
     plt.title(f'Correlation between {xLabel} and {yLabel}')
@@ -37,10 +52,15 @@ def scatter_products(productX, productY, xLabel, yLabel):
     plt.ylabel(yLabel)
     plt.show()
 
+# "Bar chart of shampoo sales for all months"
 def bar_plot_product(product, months):
+    plt.title("Shampoo Sales")
     plt.bar(months, product)
+    plt.ylabel("Shampoo Sales")
+    plt.xlabel("Month")
     plt.show()
 
+# "Calculate yearly average sales of moisturizer using DataFrame.to_numpy()"
 def calc_average_sales(productSales):
     salesSum = 0
     for monlthySales in productSales:
@@ -56,7 +76,7 @@ commands = [
     [6, "Scatterplot showing correlation between face cream and shampoo sales"],
     [7, "Bar chart of shampoo sales for all months"],
     [8, "Calculate yearly average sales of moisturizer using DataFrame.to_numpy()"],
-    [9, "Line plot of total profit for all months"],
+    [9, "Line plot of total profit for all months with red dotted line and dot markers"],
     [10, "Exit"]
 ]
 
@@ -79,9 +99,9 @@ while True:
         print("")
     if inputCommand == "3":
         print("Print records with toothpaste sales > 6000 and face cream sales < 3000")
-        print(get_product_over_under(salesDf, "toothpaste", 3000, 6000))
+        print(get_product_over_under(salesDf, "toothpaste", "facecream"))
     if inputCommand == "4":
-        plotLine(salesDf["month_number"], salesDf["total_profit"], "Months", "Total Profit")
+        plotLine(salesDf["month_number"], salesDf["total_profit"], "Months", "profit")
     if inputCommand == "5":
         plot_units_sold(salesDf.drop(["month_number", "total_units", "total_profit"], axis = 1), salesDf["month_number"])
     if inputCommand == "6":
@@ -94,7 +114,7 @@ while True:
     if inputCommand == "9":
         months = salesDf["month_number"].to_numpy()
         profit = salesDf["total_profit"].to_numpy()
-        plotLine(months, profit, "Months", "Total Profit",{"line-color":"r", "line-style":":","marker":"o"})
+        plotLine(months, profit, "Month Number", "Sold units number",{"line-color":"r", "line-style":":","marker":"o"})
     if inputCommand == "10":
         print("Goodby!!")
         break
