@@ -41,6 +41,11 @@ def bar_plot_product(product, months):
     plt.bar(months, product)
     plt.show()
 
+def calc_average_sales(productSales):
+    salesSum = 0
+    for monlthySales in productSales:
+        salesSum += monlthySales
+    return salesSum/len(productSales)
 
 commands = [
     [1, "Print month with the biggest profit"],
@@ -73,6 +78,7 @@ while True:
         print(get_yearly_average(salesDf))
         print("")
     if inputCommand == "3":
+        print("Print records with toothpaste sales > 6000 and face cream sales < 3000")
         print(get_product_over_under(salesDf, "toothpaste", 3000, 6000))
     if inputCommand == "4":
         plotLine(salesDf["month_number"], salesDf["total_profit"], "Months", "Total Profit")
@@ -83,7 +89,8 @@ while True:
     if inputCommand == "7":
         bar_plot_product(salesDf["shampoo"], salesDf["month_number"])
     if inputCommand == "8":
-        continue
+        moisturizerSales = salesDf["moisturizer"].to_numpy()
+        print(f"the average sales for moisturizer : {calc_average_sales(moisturizerSales):.2f}")
     if inputCommand == "9":
         months = salesDf["month_number"].to_numpy()
         profit = salesDf["total_profit"].to_numpy()
