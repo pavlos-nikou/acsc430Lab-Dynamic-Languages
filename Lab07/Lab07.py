@@ -1,45 +1,10 @@
-import matplotlib.pyplot as plt
+import matplotlib
 import numpy as np
 import pandas as pd
-
 
 def get_yearly_average(df):
     salesData = df.drop(["month_number", "total_units", "total_profit"],axis=1)
     return salesData.mean()
-
-def get_most_profit_month(df):
-    return df.loc[df['total_profit'].idxmax()]
-
-def get_product_over_under(df, product, min, max):
-    overDf = df[df[product] > min]
-    return overDf[overDf[product]< max]
-
-def plotLine(xAxis, yAxis, xLabel, yLabel, style = {"line-color":"b", "line-style":"-","marker":""}):
-    plt.title("Monthly Profit")
-    plt.xlabel(xLabel)
-    plt.ylabel(yLabel)
-    styleStr = f"{style["marker"]}{style["line-style"]}{style["line-color"]}"
-    print(styleStr)
-    plt.plot(xAxis, yAxis, styleStr)
-    plt.show()
-
-def plot_units_sold(products, months):
-    for product in products:
-        print(type(product))
-        plt.plot(months, products[product], label = product)
-    plt.legend()
-    plt.show()
-
-def scatter_products(productX, productY, xLabel, yLabel):
-    plt.scatter(productX, productY)
-    plt.title(f'Correlation between {xLabel} and {yLabel}')
-    plt.xlabel(xLabel)
-    plt.ylabel(yLabel)
-    plt.show()
-
-def bar_plot_product(product, months):
-    plt.bar(months, product)
-    plt.show()
 
 
 commands = [
@@ -55,7 +20,7 @@ commands = [
     [10, "Exit"]
 ]
 
-salesDf = pd.read_csv("sales.csv")
+df = pd.read_csv("sales.csv")
 print("Welcome!!\nsales.csv was loaded successfully")
 
 
@@ -66,28 +31,23 @@ while True:
         print(f"{command[0]}\t\t{command[1]}")
     inputCommand = input("command:")
     if inputCommand == "1":
-        print("Month with biggest profit:")
-        print(get_most_profit_month(salesDf))
+        continue
     if inputCommand == "2":
-        print("The average sales for each product are :\n")
-        print(get_yearly_average(salesDf))
-        print("")
+        continue
     if inputCommand == "3":
-        print(get_product_over_under(salesDf, "toothpaste", 3000, 6000))
+        continue
     if inputCommand == "4":
-        plotLine(salesDf["month_number"], salesDf["total_profit"], "Months", "Total Profit")
+        continue
     if inputCommand == "5":
-        plot_units_sold(salesDf.drop(["month_number", "total_units", "total_profit"], axis = 1), salesDf["month_number"])
+        continue
     if inputCommand == "6":
-        scatter_products(salesDf["facecream"], salesDf["shampoo"],"Face Cream", "Shampoo")
+        continue
     if inputCommand == "7":
-        bar_plot_product(salesDf["shampoo"], salesDf["month_number"])
+        continue
     if inputCommand == "8":
         continue
     if inputCommand == "9":
-        months = salesDf["month_number"].to_numpy()
-        profit = salesDf["total_profit"].to_numpy()
-        plotLine(months, profit, "Months", "Total Profit",{"line-color":"r", "line-style":":","marker":"o"})
+        continue
     if inputCommand == "10":
         print("Goodby!!")
         break
