@@ -56,10 +56,10 @@ def printResult(classifier,y_test, y_predicted):
     print("Predictions where actual transaction is not fraudulent:")
     print(df.loc[df['Actual'] == 0])
 
+def doSomething():
+    print("i did something")
 
-# dTree = trainDecisionTree(X_train, y_train)
-# yPredictedDTree = dTree.predict(X_test)
-# printResult(y_test, yPredictedDTree)
+
 
 commands = {"load": {"desc": "Load your file", "active": True},
             "cleanData":{"desc": "Remove all transactions with missing data","active": False},
@@ -119,7 +119,12 @@ while True :
         commands["run_Alg2"]["active"] = True
 
     elif inputCommand == "6" and commands["run_Alg2"]["active"] == True:
-        doSomething()
+        print("Training Model...")
+        dTree = trainDecisionTree(X_train, y_train)
+        print("Training Complete")
+        print("Testing Data...")
+        yPredictedDTree = dTree.predict(X_test)
+        printResult("Decision Tree",y_test, yPredictedDTree)
         commands["run_Alg3"]["active"] = True
 
     elif inputCommand == "7" and commands["run_Alg3"]["active"] == True:
