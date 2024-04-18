@@ -205,9 +205,7 @@ while True :
         axis[2].set_ylabel('Time in (s)')
         axis[2].set_xticks(X_axis)
         axis[2].set_xticklabels(modelNames ,rotation=45, ha='right')
-
-
-
+        
         plt.tight_layout()
         plt.show()
 
