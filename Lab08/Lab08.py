@@ -181,23 +181,30 @@ while True :
         X_axis = np.arange(len(x))
         bar_width = 0.2
         
-        figure, axis = plt.subplots(2, 2, figsize=(8, 6))
+        figure, axis = plt.subplots(1, 3, figsize=(11, 7))
         #trying to print barplot with multiple bars for each model
-        axis[0, 0].bar(X_axis - 1.1*bar_width, accs, bar_width, label='Accuracy')
-        axis[0, 0].bar(X_axis, precs, bar_width, label='Precision')
-        axis[0, 0].bar(X_axis + 1.1*bar_width, recs, bar_width, label='Recall')
-        axis[0, 0].set_xticks(X_axis)
-        axis[0, 0].set_xticklabels(x)
-        axis[0, 0].set_ylabel('Scores')
-        axis[0, 0].set_title('Model Comparison')
-        axis[0, 0].legend()
+        axis[0].bar(X_axis - 1.1*bar_width, accs, bar_width, label='Accuracy')
+        axis[0].bar(X_axis, precs, bar_width, label='Precision')
+        axis[0].bar(X_axis + 1.1*bar_width, recs, bar_width, label='Recall')
+        axis[0].set_xticks(X_axis)
+        axis[0].set_xticklabels(x)
+        axis[0].set_ylabel('Scores')
+        axis[0].set_title('Model Comparison')
+        axis[0].legend()
 
         # plot linear regression perfornamce score
-        axis[0, 1].bar("linear Regression", mse, 0.01, label='MSE')
-        axis[0, 1].set_title('linear Regression Score')
+        axis[1].bar("linear Regression", mse, bar_width, label='MSE')
+        axis[1].set_title('linear Regression Score')
 
-        # x = [linear Regresion]
-        # axis[1,:].bar()
+        #plot training time for each model
+        modelNames = ["Linear Regression", "Decision Trees", "Logistic Regressions"]
+        times = [linearRegresionTTime, dTreeTTime, logisticRegressorTTime]
+        X_axis = np.arange(len(modelNames))
+        axis[2].bar(X_axis,times)
+        axis[2].set_title('Model Trainig Time Comparison')
+        axis[2].set_ylabel('Time in (s)')
+        axis[2].set_xticks(X_axis)
+        axis[2].set_xticklabels(modelNames ,rotation=45, ha='right')
 
 
 
