@@ -192,6 +192,7 @@ while True :
         axis[0, 0].set_title('Model Comparison')
         axis[0, 0].legend()
 
+        # plot linear regression perfornamce score
         axis[0, 1].bar("linear Regression", mse, 0.01, label='MSE')
         axis[0, 1].set_title('linear Regression Score')
 
